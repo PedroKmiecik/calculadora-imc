@@ -1,0 +1,26 @@
+name: CD - Deploy simulado
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install pytest
+
+      - name: Rodar testes antes do deploy
+        run: pytest test_main.py -v
+
+      - name: Simular deploy
+        run: echo "✅ Deploy realizado com sucesso!"
