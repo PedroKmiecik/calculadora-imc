@@ -1,18 +1,21 @@
-# Calculadora de IMC
-print("Bem-vindo à Calculadora de IMC!")
+def calcular_imc(peso, altura):
+    return round(peso / (altura ** 2), 2)
 
-nome = input("Digite seu nome: ")
-peso = float(input("Digite seu peso (kg): "))
-altura = float(input("Digite sua altura (m): "))
+def classificar_imc(imc):
+    if imc < 18.5:
+        return "Abaixo do peso"
+    elif imc < 25:
+        return "Peso normal"
+    elif imc < 30:
+        return "Sobrepeso"
+    else:
+        return "Obesidade"
 
-imc = peso / (altura ** 2)
-print(f"{nome}, seu IMC é: {imc:.2f}")
-
-if imc < 18.5:
-    print("Classificação: Abaixo do peso")
-elif imc < 25:
-    print("Classificação: Peso normal")
-elif imc < 30:
-    print("Classificação: Sobrepeso")
-else:
-    print("Classificação: Obesidade")
+if __name__ == "__main__":
+    nome = input("Digite seu nome: ")
+    peso = float(input("Digite seu peso (kg): "))
+    altura = float(input("Digite sua altura (m): "))
+    imc = calcular_imc(peso, altura)
+    classificacao = classificar_imc(imc)
+    print(f"{nome}, seu IMC é: {imc}")
+    print(f"Classificação: {classificacao}")
